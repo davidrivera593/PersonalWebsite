@@ -10,12 +10,12 @@ export const AboutSection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                    <h3 className="text-2xl font-semibold">Professional Money Getter</h3>
+                    <h3 className="text-2xl font-semibold">Aspiring Software Engineer</h3>
                     <p className="text-muted-foreground">
-                        Im real asf
+                        I am passionate about building innovative software solutions.
                     </p>
                     <p className="text-muted-foreground">
-                        Im hard asf
+                        
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
