@@ -1,4 +1,4 @@
-import { Code } from "lucide-react";
+import { Code, User } from "lucide-react";
 
 export const AboutSection = () => {
     return (
@@ -35,12 +35,12 @@ export const AboutSection = () => {
                             <div className="p-3 rounded-full bg-primary/10">
                                 <Code className="h-6 w-6 text-primary"/>
                             </div>
-                        </div>
-                    </div>
-                    <div className="gradient-border p-6 card-hover">
-                        <div className="flex items-start gap-4">
-                            <div className="p-3 rounded-full bg-primary/10">
-                                <Code className="h-6 w-6 text-primary"/>
+                            <div>
+                                <h4 className="text-semibold text-lg"> Web Development</h4>
+                                <p className="text-muted-foreground">
+                                    Creating responsive websites and web applications 
+                                    with modern frameworks. 
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -48,6 +48,27 @@ export const AboutSection = () => {
                         <div className="flex items-start gap-4">
                             <div className="p-3 rounded-full bg-primary/10">
                                 <Code className="h-6 w-6 text-primary"/>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-lg">Backend Development</h4>
+                                <p className="text-muted-foreground">
+                                    Building robust server-side applications 
+                                    and APIs with modern technologies.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="gradient-border p-6 card-hover">
+                        <div className="flex items-start gap-4">
+                            <div className="p-3 rounded-full bg-primary/10">
+                                <User className="h-6 w-6 text-primary"/>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-lg">UI/UX Design</h4>
+                                <p className="text-muted-foreground">
+                                    Designing intuitive and engaging user 
+                                    experiences with attention to detail.
+                                </p>
                             </div>
                         </div>
                     </div>
