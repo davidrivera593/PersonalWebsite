@@ -3,11 +3,12 @@ import {cn} from "@/lib/utils"
 
 const skills = [
     //Languages
-    {name: "HTML", category:"language"},
-    {name: "CSS", category: "language"},
-    {name: "Javascript",  category: "language"},
-    {name: "Python", category: "language"},
-    {name: "R", category: "language"},
+    {name: "HTML", category:"languages"},
+    {name: "CSS", category: "languages"},
+    {name: "Javascript",  category: "languages"},
+    {name: "Typescript",  category: "languages"},
+    {name: "Python", category: "languages"},
+    {name: "R", category: "languages"},
 
     //Frameworks
     {name: "React",  category: "frameworks"},
@@ -30,7 +31,7 @@ const skills = [
     {name: "VS Code", category: "tools"}
 ];
 
-const categories = ["all", "language", "database", "frameworks", "tools"];
+const categories = ["all", "languages", "database", "frameworks", "tools"];
 
 export const SkillsSection = () => {
     const [activeCategory, setActiveCategory] = useState("All");

@@ -6,9 +6,18 @@ const projects = [
         title: "ASU Ticketing System",
         description: "Ticketing system for ASU Computer Science students and faculty.", 
         image: "/projects/project1.png",
-        tags: ["React", "Node.js", "TailwindCSS"],
+        tags: ["React", "Javascript", "Node.js", "TailwindCSS", "PostgreSQL"],
         demoUrl: "#",
         githubUrl: "https://github.com/Swimming7birdz/ticketing_system",
+    }, 
+    {
+        id: 2, 
+        title: 'Polyview (Polymarket MCP Chatbot)',
+        description: "Claude Builder Club Hackathon project that analyzes Polymarket data in real-time using Anthropic AI that can create charts and recommend articles based on user input.",
+        image: "/projects/project2.png",
+        tags: ["React",  "Typescript","Node.js", "Express", "TailwindCSS"],
+        demoUrl: "https://youtu.be/edB_MoEx7mA?si=sYv0ouqiGLuXwLLt",
+        githubUrl: "https://github.com/Americana808/PolyView",
     }
 ];
 
