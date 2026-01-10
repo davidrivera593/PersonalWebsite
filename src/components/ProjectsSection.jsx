@@ -18,6 +18,15 @@ const projects = [
         tags: ["React",  "Typescript","Node.js", "Express", "TailwindCSS"],
         demoUrl: "https://youtu.be/edB_MoEx7mA?si=sYv0ouqiGLuXwLLt",
         githubUrl: "https://github.com/Americana808/PolyView",
+    }, 
+    {
+        id: 3, 
+        title: 'US Accident Data Visualization 2016-2023 in R and Python',
+        description: "Personal project analyzing data to determine the effects that external factors, such as weather or time of day have an impact on accident severity and frequency.",
+        image: "/projects/project3.png",
+        tags: ["R", "Tidyverse", "Python","Pandas", "Plotly", "Matplotlib"],
+        demoUrl: "https://youtu.be/6MgnAoMgV9I",
+        githubUrl: "https://github.com/davidrivera593/US-Traffic-Data-Visualization/",
     }
 ];
 

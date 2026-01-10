@@ -1,4 +1,5 @@
-import {Mail, MapPin, Phone, Linkedin, Instagram} from "lucide-react";
+import {Mail, MapPin, Phone, Linkedin, Instagram, Send} from "lucide-react";
+import {cn} from '@/lib/utils'
 
 export const ContactSection = () => {
     return (
@@ -40,7 +41,7 @@ export const ContactSection = () => {
                                     href="tel:+16025654664"
                                     className="text-muted-foreground hover:text-primary transition-colors"
                                 >
-                                    +1 (602) 565-4664
+                                    +1 (602) xxx-xxxx
                                 </a>
                             </div>
                         </div>
@@ -106,7 +107,13 @@ export const ContactSection = () => {
                             />
                         </div>
 
-                        <button></button>
+                        <button type="submit" className={cn(
+                            "cosmic-button w-full flex items-center justify-center gap-2",
+                            
+                            )}>
+                                Send Message
+                                <Send size={16} />
+                        </button>
                     </form>
                 </div>
             </div>
