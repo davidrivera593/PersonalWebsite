@@ -1,4 +1,4 @@
-import { Code, User } from "lucide-react";
+import { Code, Database, Bot } from "lucide-react";
 
 export const AboutSection = () => {
     return (
@@ -10,12 +10,16 @@ export const AboutSection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                    <h3 className="text-2xl font-semibold">Aspiring Software Engineer</h3>
+                    <h3 className="text-2xl font-semibold">Full-Stack &amp; Data-Focused Software Engineer</h3>
                     <p className="text-muted-foreground">
-                        I am passionate about building innovative software solutions.
+                        I'm a Computer Science student at Arizona State University (Dean's List, graduating
+                        May 2026) who enjoys building software end-to-end — from responsive React frontends
+                        to data pipelines and APIs that turn messy data into something useful.
                     </p>
                     <p className="text-muted-foreground">
-                        
+                        Most recently, as a Data Science &amp; Business Intelligence intern at APL Logistics,
+                        I built real-time analytics on millions of rows of shipment data and shipped features
+                        through a disciplined Git workflow using modern AI-assisted, agentic development tools.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
@@ -23,7 +27,7 @@ export const AboutSection = () => {
                             Get In Touch
                         </a>
 
-                        <a href="/resume.pdf" download="David_Rivera_Resume.pdf" className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300">
+                        <a href="/Resume%20-%20David%20Rivera.pdf" download="Resume - David Rivera.pdf" className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300">
                             Download Resume
                         </a>
                     </div>
@@ -35,11 +39,11 @@ export const AboutSection = () => {
                             <div className="p-3 rounded-full bg-primary/10">
                                 <Code className="h-6 w-6 text-primary"/>
                             </div>
-                            <div>
-                                <h4 className="text-semibold text-lg"> Web Development</h4>
+                            <div className="text-left">
+                                <h4 className="font-semibold text-lg"> Full-Stack Development</h4>
                                 <p className="text-muted-foreground">
-                                    Creating responsive websites and web applications 
-                                    with modern frameworks. 
+                                    Building responsive web applications end-to-end with React,
+                                    Node.js, and modern frameworks.
                                 </p>
                             </div>
                         </div>
@@ -47,13 +51,13 @@ export const AboutSection = () => {
                     <div className="gradient-border p-6 card-hover">
                         <div className="flex items-start gap-4">
                             <div className="p-3 rounded-full bg-primary/10">
-                                <Code className="h-6 w-6 text-primary"/>
+                                <Database className="h-6 w-6 text-primary"/>
                             </div>
-                            <div>
-                                <h4 className="font-semibold text-lg">Backend Development</h4>
+                            <div className="text-left">
+                                <h4 className="font-semibold text-lg">Data &amp; Business Intelligence</h4>
                                 <p className="text-muted-foreground">
-                                    Building robust server-side applications 
-                                    and APIs with modern technologies.
+                                    Turning large datasets into real-time insights with Python, SQL,
+                                    Snowflake, and Power BI.
                                 </p>
                             </div>
                         </div>
@@ -61,13 +65,13 @@ export const AboutSection = () => {
                     <div className="gradient-border p-6 card-hover">
                         <div className="flex items-start gap-4">
                             <div className="p-3 rounded-full bg-primary/10">
-                                <User className="h-6 w-6 text-primary"/>
+                                <Bot className="h-6 w-6 text-primary"/>
                             </div>
-                            <div>
-                                <h4 className="font-semibold text-lg">UI/UX Design</h4>
+                            <div className="text-left">
+                                <h4 className="font-semibold text-lg">AI &amp; Agentic Workflows</h4>
                                 <p className="text-muted-foreground">
-                                    Designing intuitive and engaging user 
-                                    experiences with attention to detail.
+                                    Developing AI-powered features and agents using the Claude API,
+                                    MCP, and prompt engineering.
                                 </p>
                             </div>
                         </div>

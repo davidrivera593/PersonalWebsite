@@ -1,40 +1,59 @@
 import {useState} from "react";
 import {cn} from "@/lib/utils"
+import { Reveal } from "@/components/Reveal";
 
 const skills = [
-    //Languages
-    {name: "HTML", category:"languages"},
-    {name: "CSS", category: "languages"},
-    {name: "Javascript",  category: "languages"},
-    {name: "Typescript",  category: "languages"},
+    // Languages
     {name: "Python", category: "languages"},
-    {name: "R", category: "languages"},
+    {name: "JavaScript", category: "languages"},
+    {name: "TypeScript", category: "languages"},
+    {name: "SQL", category: "languages"},
+    {name: "HTML/CSS", category: "languages"},
+    {name: "Java", category: "languages"},
 
-    //Frameworks
-    {name: "React",  category: "frameworks"},
+    // Data & Databases
+    {name: "PostgreSQL", category: "data"},
+    {name: "MySQL", category: "data"},
+    {name: "Snowflake", category: "data"},
+    {name: "Firebase", category: "data"},
+    {name: "Power BI", category: "data"},
+
+    // Frameworks & Libraries
+    {name: "FastAPI", category: "frameworks"},
+    {name: "React", category: "frameworks"},
     {name: "Next.js", category: "frameworks"},
+    {name: "Node.js", category: "frameworks"},
     {name: "Flask", category: "frameworks"},
+    {name: "Tailwind CSS", category: "frameworks"},
+    {name: "Express", category: "frameworks"},
+    {name: "Material UI", category: "frameworks"},
 
-    //Backend
-    {name: "Node.js", category: "backend"},
+    // Cloud & Tools
+    {name: "Azure", category: "cloud"},
+    {name: "AWS", category: "cloud"},
+    {name: "Git", category: "cloud"},
+    {name: "GitHub", category: "cloud"},
+    {name: "VS Code", category: "cloud"},
 
-    //Databases
-    {name:"PostgresSQL", category: "database"},
-    {name:"MySQL", category: "database"},
-
-    // Tools/Workflow
-    {name: "Tailwind", category: "tools"},
-    {name: "Bootstrap", category:"tools"},
-    {name: "Git", category:"tools"},
-    {name: "Scrum", category:"tools"},
-    {name: "Agile", category:"tools"},
-    {name: "VS Code", category: "tools"}
+    // AI Development
+    {name: "Claude (Anthropic API)", category: "ai"},
+    {name: "LLM Agents", category: "ai"},
+    {name: "Agentic Workflows", category: "ai"},
+    {name: "MCP", category: "ai"},
+    {name: "Prompt Engineering", category: "ai"},
 ];
 
-const categories = ["all", "languages", "database", "frameworks", "tools"];
+const categories = [
+    {id: "all", label: "All"},
+    {id: "languages", label: "Languages"},
+    {id: "data", label: "Data & Databases"},
+    {id: "frameworks", label: "Frameworks"},
+    {id: "cloud", label: "Cloud & Tools"},
+    {id: "ai", label: "AI Development"},
+];
 
 export const SkillsSection = () => {
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [activeCategory, setActiveCategory] = useState("all");
 
     const filteredSkills = skills.filter(
         skill => activeCategory === "all" || skill.category === activeCategory
@@ -49,29 +68,29 @@ export const SkillsSection = () => {
 
             <div className="flex flex-wrap justify-center gap-4 mb-12">
                 {categories.map((category, key) => (
-                    <button 
-                        key={key} 
-                        onClick = {() => setActiveCategory(category)}
+                    <button
+                        key={key}
+                        onClick = {() => setActiveCategory(category.id)}
                         className={cn(
                             "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
-                            activeCategory === category ? "bg-primary text-primary-foreground" : 
-                                                          "bg-secondary/70 text-foreground hover:bd-secondary"
+                            activeCategory === category.id ? "bg-primary text-primary-foreground" :
+                                                          "bg-secondary/70 text-foreground hover:bg-secondary"
                         )}
                     >
-                        {category}
+                        {category.label}
                     </button>
                 ))}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredSkills.map((skill, key) => (
-                    <div 
-                        key={key} 
-                        className="bg-card p-6 rounded-lg shadow-xs card-hover">
+                    <Reveal key={`${activeCategory}-${skill.name}`} delay={key * 40}>
+                        <div className="bg-card p-6 rounded-lg shadow-xs card-hover">
                             <div className="text-left mb-4">
                                 <h3 className="font-semibold text-lg"> {skill.name}</h3>
                             </div>
-                    </div>
+                        </div>
+                    </Reveal>
                 ))}
             </div>
         </div>
