@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useLayoutEffect } from "react";
 import { ArrowRight, ExternalLink, Github, Lock, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
@@ -54,12 +54,73 @@ const projects = [
 
 const isRealLink = (url) => Boolean(url) && url !== "#";
 
+// Render the list three times so the carousel can loop seamlessly in either
+// direction. We park the scroll position in the middle copy and, whenever the
+// user drifts toward an edge, jump by exactly one copy's width — invisible
+// because the copies are identical.
+const loopProjects = [...projects, ...projects, ...projects];
+
 export const ProjectsSection = () => {
     const scrollRef = useRef(null);
+
+    // Exact width of one copy (including the gap), measured from layout so it
+    // stays correct across breakpoints. Independent of the current scrollLeft.
+    const getOneSetWidth = () => {
+        const el = scrollRef.current;
+        if (!el || el.children.length <= projects.length) return 0;
+        return el.children[projects.length].offsetLeft - el.children[0].offsetLeft;
+    };
+
+    // Keep the scroll position within the middle copy so there's always runway
+    // on both sides. Called after motion settles, so the ±one-copy jump is
+    // never visible.
+    const recenter = () => {
+        const el = scrollRef.current;
+        const oneSet = getOneSetWidth();
+        if (!el || oneSet <= 0) return;
+        if (el.scrollLeft < oneSet * 0.5) {
+            el.scrollLeft += oneSet;
+        } else if (el.scrollLeft >= oneSet * 1.5) {
+            el.scrollLeft -= oneSet;
+        }
+    };
+
+    // Start parked in the middle copy. Re-apply on the next frame so it wins
+    // against the browser's scroll restoration after a reload.
+    useLayoutEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        const park = () => {
+            const oneSet = getOneSetWidth();
+            if (oneSet > 0) el.scrollLeft = oneSet;
+        };
+        park();
+        const raf = requestAnimationFrame(park);
+        return () => cancelAnimationFrame(raf);
+    }, []);
+
+    // Recenter shortly after scrolling stops (covers trackpad, drag, and the
+    // tail of an arrow-driven smooth scroll).
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        let timer;
+        const onScroll = () => {
+            clearTimeout(timer);
+            timer = setTimeout(recenter, 120);
+        };
+        el.addEventListener("scroll", onScroll, { passive: true });
+        return () => {
+            el.removeEventListener("scroll", onScroll);
+            clearTimeout(timer);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const scroll = (direction) => {
         const el = scrollRef.current;
         if (!el) return;
+        recenter(); // normalize before moving (instant, invisible)
         el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
     };
 
@@ -91,9 +152,9 @@ export const ProjectsSection = () => {
                     {/* Scroller */}
                     <div
                         ref={scrollRef}
-                        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                        className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                     >
-                        {projects.map((project, key) => (
+                        {loopProjects.map((project, key) => (
                             <div
                                 key={key}
                                 className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-[360px]"

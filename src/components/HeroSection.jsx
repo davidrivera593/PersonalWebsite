@@ -5,11 +5,15 @@ export const HeroSection = () => {
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-4">
         <div className="container max-w-4xl mx-auto text-center z-10">
             <div className="space-y-6">
-                <img
-                    src="/headshot-placeholder.svg"
-                    alt="David Rivera"
-                    className="h-32 w-32 rounded-full object-cover mx-auto ring-4 ring-primary/40 shadow-lg opacity-0 animate-fade-in"
-                />
+                <div className="relative mx-auto w-fit opacity-0 animate-fade-in">
+                    <span className="pointer-events-none absolute -inset-3 rounded-full bg-primary/12 blur-md" />
+                    <span className="pointer-events-none absolute -inset-1 rounded-full border border-primary/45" />
+                    <img
+                        src="/DSC_0387.JPG"
+                        alt="David Rivera"
+                        className="relative h-40 w-40 md:h-48 md:w-48 rounded-full object-cover object-[50%_16%] mx-auto ring-4 ring-background shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
+                    />
+                </div>
                 <h1 className = "text-4xl md:text-6xl font-bold tracking-tight">
                     <span className="opacity-0 animate-fade-in"> Hello there, I am </span>
                     <span className="text-primary opacity-0 animate-fade-in-delay-1"> David</span>
