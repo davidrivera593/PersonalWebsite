@@ -13,7 +13,7 @@ const experiences = [
             "Shipped 20+ production features and fixes through a disciplined Git PR workflow while preserving app uptime.",
             "Applied enterprise-approved AI tools (Claude Code, GitHub Copilot, Snowflake Cortex) to plan multi-file changes, generate tests, write documentation, and review implementations with agentic workflows.",
         ],
-        tags: ["Python", "Snowflake", "Shapely", "SQL", "Git", "Claude Code"],
+        tags: ["Python", "FastAPI", "Snowflake", "Shapely", "SQL", "Git", "Claude Code"],
     },
     {
         role: "Warehouse Associate II",
