@@ -124,6 +124,19 @@ export const ProjectsSection = () => {
         el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
     };
 
+    // Pointer-driven 3D tilt on the cards. Skipped when reduced motion is set.
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const handleTilt = (e) => {
+        if (prefersReduced) return;
+        const el = e.currentTarget;
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform =
+            `perspective(800px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg) translateY(-4px)`;
+    };
+    const resetTilt = (e) => { e.currentTarget.style.transform = ""; };
+
     return <section id="projects" className="py-24 px-4 relative">
         <div className="container mx-auto max-w-6xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
@@ -144,7 +157,7 @@ export const ProjectsSection = () => {
                         type="button"
                         onClick={() => scroll(-1)}
                         aria-label="Scroll projects left"
-                        className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 items-center justify-center rounded-full border bg-card/80 backdrop-blur text-foreground shadow-md hover:bg-primary hover:text-primary-foreground transition-colors"
+                        className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 items-center justify-center border bg-card/80 backdrop-blur text-foreground shadow-md hover:bg-primary hover:text-primary-foreground transition-colors"
                     >
                         <ChevronLeft size={20} />
                     </button>
@@ -159,7 +172,11 @@ export const ProjectsSection = () => {
                                 key={key}
                                 className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-[360px]"
                             >
-                                <div className="group h-full flex flex-col bg-card rounded-lg overflow-hidden shadow-xs card-hover">
+                                <div
+                                    onMouseMove={handleTilt}
+                                    onMouseLeave={resetTilt}
+                                    className="group h-full flex flex-col bg-card overflow-hidden border border-border shadow-xs transition-transform duration-200 ease-out will-change-transform hover:border-primary hover:shadow-xl"
+                                >
                                     <div className="h-48 overflow-hidden">
                                         <img src={project.image}
                                             alt={project.title}
@@ -170,7 +187,7 @@ export const ProjectsSection = () => {
                                     <div className="p-6 flex flex-col flex-1">
                                         <div className="flex flex-wrap gap-2 mb-4">
                                             {project.tags.map((tag, i) => (
-                                                <span key={i} className="px-2 py-1 text-xs border font-medium rounded-full bg-secondary text-secondary-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                                                <span key={i} className="px-2 py-1 text-xs border font-medium bg-secondary text-secondary-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                                                     {tag}
                                                 </span>
                                             ))}
@@ -208,7 +225,7 @@ export const ProjectsSection = () => {
                         type="button"
                         onClick={() => scroll(1)}
                         aria-label="Scroll projects right"
-                        className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 items-center justify-center rounded-full border bg-card/80 backdrop-blur text-foreground shadow-md hover:bg-primary hover:text-primary-foreground transition-colors"
+                        className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 items-center justify-center border bg-card/80 backdrop-blur text-foreground shadow-md hover:bg-primary hover:text-primary-foreground transition-colors"
                     >
                         <ChevronRight size={20} />
                     </button>

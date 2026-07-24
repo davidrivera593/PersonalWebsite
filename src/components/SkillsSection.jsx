@@ -72,7 +72,7 @@ export const SkillsSection = () => {
                         key={key}
                         onClick = {() => setActiveCategory(category.id)}
                         className={cn(
-                            "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
+                            "px-5 py-2 transition-colors duration-300 capitalize",
                             activeCategory === category.id ? "bg-primary text-primary-foreground" :
                                                           "bg-secondary/70 text-foreground hover:bg-secondary"
                         )}
