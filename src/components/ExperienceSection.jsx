@@ -65,7 +65,7 @@ export const ExperienceSection = () => {
                                         {exp.tags.map((tag, i) => (
                                             <span
                                                 key={i}
-                                                className="px-2 py-1 text-xs border font-medium rounded-full bg-secondary text-secondary-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
+                                                className="px-2 py-1 text-xs border font-medium bg-secondary text-secondary-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"
                                             >
                                                 {tag}
                                             </span>
