@@ -170,6 +170,7 @@ export const ProjectsSection = () => {
                         {loopProjects.map((project, key) => (
                             <div
                                 key={key}
+                                aria-hidden={key >= projects.length || undefined}
                                 className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-[360px]"
                             >
                                 <div
@@ -180,6 +181,7 @@ export const ProjectsSection = () => {
                                     <div className="h-48 overflow-hidden">
                                         <img src={project.image}
                                             alt={project.title}
+                                            loading="lazy"
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                     </div>
@@ -198,12 +200,12 @@ export const ProjectsSection = () => {
                                         <div className="mt-auto flex justify-between items-center">
                                             <div className="flex items-center space-x-3">
                                                 {isRealLink(project.demoUrl) && (
-                                                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-foreground/80 hover:text-primary transition-colors duration-300">
+                                                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" tabIndex={key >= projects.length ? -1 : undefined} className="text-foreground/80 hover:text-primary transition-colors duration-300">
                                                         <ExternalLink size={20} />
                                                     </a>
                                                 )}
                                                 {isRealLink(project.githubUrl) && (
-                                                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-foreground/80 hover:text-primary transition-colors duration-300">
+                                                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" tabIndex={key >= projects.length ? -1 : undefined} className="text-foreground/80 hover:text-primary transition-colors duration-300">
                                                         <Github size={20} />
                                                     </a>
                                                 )}
@@ -239,6 +241,7 @@ export const ProjectsSection = () => {
             <div className="text-center mt-12">
                 <a className="cosmic-button w-fit flex items-center mx-auto gap-2"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://github.com/davidrivera593">
                     Check My Github <ArrowRight size={16} />
                 </a>
